@@ -12,7 +12,6 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as DateIcon } from "feather-icons/dist/icons/calendar.svg";
 import MasonryLayout from 'components/MasonryLayout/MasonryLayout';
 import ContainerCard from 'components/ContainerCard/ContainerCard';
-import images from "./Images.json"
 
 
 const HeadingRow = tw.div`flex`;
