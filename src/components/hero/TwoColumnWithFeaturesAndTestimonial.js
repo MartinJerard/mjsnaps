@@ -42,13 +42,13 @@ const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-prima
 
 
 export default ({
-  heading = "Welcome!",
-  description = "Hope you are doing Fine!",
+  heading = "About Author",
+  description = "Welcome! Hope you are doing Fine!",
   descriptionLine1 = "As a Avid Traveller and Amateur Photographer, I use this space to share things I feel like sharing. Hope you have a good time around!",
   imageSrc = MyImage,
   imageDecoratorBlob = true,
   primaryButtonUrl = "/thank-you",
-  primaryButtonText = "Get Started",
+  primaryButtonText = "Go to All Blog Posts",
   buttonRounded = true,
   features = ["Available in 7 Locations", "Premium Internet Backbone", "99.99% Uptime SLA"],
   testimonial = {
@@ -61,13 +61,21 @@ export default ({
 
   return (
       <Container>
+        <Row>
+
+        <PrimaryButton as="a" href="/blogs" css={buttonRoundedCss}>
+                Blog Posts...
+              </PrimaryButton>
+              <PrimaryButton as="a" href="/gallery" css={buttonRoundedCss}>
+                Gallery...
+              </PrimaryButton>
+        </Row>
         <ContentWithVerticalPadding>
           <Row>
             <TextColumn>
               <Heading>{heading}</Heading>
               <Description>{description}</Description>
               <Description>{descriptionLine1}</Description>
-              <Description>
               <div tw="mt-12 text-center">
               <a
                   href="https://twitter.com/mj_desanthiri"
@@ -79,7 +87,6 @@ export default ({
                   To Connect Follow @Twitter
                 </a>
                 </div>
-              </Description>
               <ContentWithPadding>
               <ComponentPreviewLink className="group" href={primaryButtonUrl}>
                 Should you have a comment, Leave Here{" "}

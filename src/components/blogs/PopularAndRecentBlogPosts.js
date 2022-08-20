@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "components/misc/Headings.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
+import { useGetPostsTwoFeaturedPost } from "../../useRequest";
 
 const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
 const Heading = tw(SectionHeading)`text-left lg:text-4xl xl:text-5xl`;
@@ -45,6 +46,8 @@ const RecentPostsContainer = styled.div`
 const PostTextContainer = tw.div``
 
 export default () => {
+  const { data, isSuccess } = useGetPostsTwoFeaturedPost();
+
   // This setting is for animating the post background image on hover
   const postBackgroundSizeAnimation = {
     rest: {
@@ -128,20 +131,19 @@ export default () => {
           <PopularPostsContainer>
             <Heading>Featured Posts</Heading>
             <PostsContainer>
-              {popularPosts.map((post, index) => (
-                <Post key={index} href={post.url} className="group" initial="rest" whileHover="hover" animate="rest">
+              {isSuccess && data.featured.map((post, index) => (
+                <Post key={index} href={`blogs/${post.slug}`} className="group" initial="rest" whileHover="hover" animate="rest">
                   <Image
                     transition={{ duration: 0.3 }}
                     variants={postBackgroundSizeAnimation}
-                    imageSrc={post.postImageSrc}
+                    imageSrc={post.featuredImage.url}
                   />
                   <Title>{post.title}</Title>
-                  <Description>{post.description}</Description>
+                  <Description>{post.excerpt}</Description>
                   <AuthorInfo>
-                    <AuthorImage src={post.authorImageSrc} />
                     <AuthorNameAndProfession>
-                      <AuthorName>{post.authorName}</AuthorName>
-                      <AuthorProfile>{post.authorProfile}</AuthorProfile>
+                      <AuthorName>{post.visitedOn}</AuthorName>
+                      <AuthorProfile>{post.location}</AuthorProfile>
                     </AuthorNameAndProfession>
                   </AuthorInfo>
                 </Post>
@@ -151,13 +153,13 @@ export default () => {
           <RecentPostsContainer>
             <Heading>Recent Posts</Heading>
             <PostsContainer>
-              {recentPosts.map((post, index) => (
-              <Post key={index} href={post.url} className="group">
+              {isSuccess && data.normal.map((post, index) => (
+              <Post key={index} href={`blogs/${post.slug}`} className="group">
                 <PostTextContainer>
                   <Title>{post.title}</Title>
-                  <AuthorName>{post.authorName}</AuthorName>
+                  <AuthorName>{post.location}</AuthorName>
                 </PostTextContainer>
-                <Image imageSrc={post.postImageSrc} />
+                <Image imageSrc={post.featuredImage.url} />
               </Post>
               ))}
             </PostsContainer>

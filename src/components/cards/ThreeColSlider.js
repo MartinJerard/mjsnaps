@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
 import Slider from "react-slick";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -9,6 +10,7 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
+import { useGetOtherPosts } from "../../useRequest";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-16 lg:py-20`;
@@ -66,6 +68,8 @@ const Text = tw.div`ml-2 text-sm font-semibold text-gray-800`;
 
 const PrimaryButton = tw(PrimaryButtonBase)`mt-auto sm:text-lg rounded-none w-full rounded sm:rounded-none sm:rounded-br-4xl py-3 sm:py-6`;
 export default () => {
+  const { postName } = useParams()
+  const { data, isSuccess } = useGetOtherPosts(postName);
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
@@ -87,6 +91,7 @@ export default () => {
       },
     ]
   };
+
 
   /* Change this according to your needs */
   const cards = [
@@ -135,24 +140,24 @@ export default () => {
           </Controls>
         </HeadingWithControl>
         <CardSlider ref={setSliderRef} {...sliderSettings}>
-          {cards.map((card, index) => (
+          {isSuccess && data.map((post, index) => (
             <Card key={index}>
-              <CardImage imageSrc={card.imageSrc} />
+              <CardImage imageSrc={post.featuredImage.url} />
               <TextInfo>
                 <TitleReviewContainer>
-                  <Title>{card.title}</Title>
+                  <Title>{post.title}</Title>
                 </TitleReviewContainer>
                 <SecondaryInfoContainer>
                   <IconWithText>
                     <IconContainer>
                       <LocationIcon />
                     </IconContainer>
-                    <Text>{card.locationText}</Text>
+                    <Text>{post.location}</Text>
                   </IconWithText>
                 </SecondaryInfoContainer>
-                <Description>{card.description}</Description>
+                <Description>{post.excerpt}</Description>
               </TextInfo>
-              <PrimaryButton>Read More</PrimaryButton>
+              <PrimaryButton as="a" href={`/blogs/${post.slug}`}>Read More</PrimaryButton>
             </Card>
           ))}
         </CardSlider>

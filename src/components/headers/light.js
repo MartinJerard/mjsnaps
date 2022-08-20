@@ -71,7 +71,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="/blogs">Blog</NavLink>
-      <NavLink href="/#">Gallery</NavLink>
+      <NavLink href="/gallery">Gallery</NavLink>
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/thank-you">Leave a comment!</PrimaryLink>
     </NavLinks>
   ];
@@ -93,7 +93,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
     <Header className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
-        {links}
+        {window.location.pathname !== '/' ? links : []}
       </DesktopNavLinks>
 
       <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>

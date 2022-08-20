@@ -38,6 +38,8 @@ const CustomerInfoAndControlsContainer = tw.div`mt-8 flex items-center flex-col 
 const CustomerImage = tw.img`w-16 h-16 rounded-full`
 const CustomerNameAndProfileContainer = tw.div`mt-4 sm:mt-0 sm:ml-4 flex flex-col`
 const CustomerName = tw.span`text-lg font-semibold`
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto`;
+const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const CustomerProfile = tw.span`text-sm font-normal text-gray-700`
 const ControlsContainer = tw.div`sm:ml-auto flex`
 const ControlButton = styled.button`
@@ -49,7 +51,7 @@ const ControlButton = styled.button`
 
 export default ({
   subheading = "",
-  heading = "Testimonials",
+  heading = "Blog Comments",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   testimonials = [
     {
@@ -81,24 +83,18 @@ export default ({
   const [sliderRef, setSliderRef] = useState(null)
 
   return (
-    <PrimaryBackgroundContainer>
+    // <PrimaryBackgroundContainer>
       <ContentWithPaddingXl>
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
           <Heading>{heading}</Heading>
-          <Description>{description}</Description>
         </HeadingContainer>
-        <TestimonialsSlider arrows={false} ref={setSliderRef}>
+        {/* <TestimonialsSlider arrows={false} ref={setSliderRef}> */}
           {testimonials.map((testimonial, index) => (
             <Testimonial key={index}>
-              <QuoteContainer>
-                <QuoteIcon />
-                <Quote>
-                  {testimonial.quote}
-                </Quote>
-              </QuoteContainer>
+              <TwoColumn>
+              <Column>
               <CustomerInfoAndControlsContainer>
-                <CustomerImage src={testimonial.imageSrc} />
                 <CustomerNameAndProfileContainer>
                   <CustomerName>
                     {testimonial.customerName}
@@ -107,19 +103,29 @@ export default ({
                     {testimonial.customerProfile}
                   </CustomerProfile>
                 </CustomerNameAndProfileContainer>
-                <ControlsContainer>
+              </CustomerInfoAndControlsContainer>
+              </Column>
+              <Column>
+              <QuoteContainer>
+                <QuoteIcon />
+                <Quote>
+                  {testimonial.quote}
+                </Quote>
+              </QuoteContainer>
+              </Column>
+                {/* <ControlsContainer>
                   <ControlButton onClick={sliderRef?.slickPrev}>
-                    <ArrowLeftIcon className="icon" />
+                  <ArrowLeftIcon className="icon" />
                   </ControlButton>
                   <ControlButton>
-                    <ArrowRightIcon className="icon" onClick={sliderRef?.slickNext}/>
+                  <ArrowRightIcon className="icon" onClick={sliderRef?.slickNext}/>
                   </ControlButton>
-                </ControlsContainer>
-              </CustomerInfoAndControlsContainer>
+                </ControlsContainer> */}
+                </TwoColumn>
             </Testimonial>
           ))}
-        </TestimonialsSlider>
+        {/* </TestimonialsSlider> */}
       </ContentWithPaddingXl>
-    </PrimaryBackgroundContainer>
+    // </PrimaryBackgroundContainer>
   );
 };

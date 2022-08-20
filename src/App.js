@@ -16,7 +16,6 @@ import BlogPosts from "pages/BlogPosts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ServiceLandingPage from "demos/ServiceLandingPage";
 import Footer from "components/footers/MiniCenteredFooter";
-import WithStatsAndImageFeatures from "components/features/TwoColSingleFeatureWithStats.js";
 
 
 export default function App() {
