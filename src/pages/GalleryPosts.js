@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { useParams } from 'react-router-dom';
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "components/misc/Headings.js";
-import SliderCards from "components/cards/ThreeColSlider.js";
+// import SliderCards from "components/cards/ThreeColSlider.js";
+import SliderCards from "components/cards/ThreeColSliderGallery";
 import ImageGallery from 'react-image-gallery';
 import { ContentWithVerticalPadding, ContentWithPadding } from "components/misc/Layouts.js";
-import { useGetPostsDetails } from "../useRequest";
+import { useGetGalleryDetails } from "../useRequest";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
+import Lightbox from "yet-another-react-lightbox";
 
 
 const Container = tw.div`relative`;
@@ -43,69 +45,31 @@ const Image1 = tw.img`max-w-full w-96 rounded-t sm:rounded relative z-20 place-i
 
 
 export default () => {
+  const [open, setOpen] = React.useState(false);
   const { postName } = useParams()
-  const { data, isSuccess } = useGetPostsDetails(postName);
+  const { data, isSuccess } = useGetGalleryDetails(postName);
 
   let images = isSuccess ? data.postPics.map(value=> {
-    return {original: value.url}
+    return {src: value.url}
   }) : []
-
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = (<b key={index}>{text}</b>);
-      }
-
-      if (obj.italic) {
-        modifiedText = (<em key={index}>{text}</em>);
-      }
-
-      if (obj.underline) {
-        modifiedText = (<u key={index}>{text}</u>);
-      }
-    }
-
-    switch (type) {
-      case 'heading-three':
-        return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
-      case 'paragraph':
-        return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
-      case 'heading-four':
-        return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
-      case 'image':
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
-
+console.log(JSON.stringify(images))
   return (
     isSuccess && 
       <>
     <ContentWithVerticalPadding>
     <TextContent>
             <Heading>{data.title}</Heading>
+            <Description>{data.excerpt}</Description>
           </TextContent>
-    <ImageGallery items={images} autoPlay={true}/>
-    <TextContent>
-            <Description>
-            {data.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
-
-            return getContentFragment(index, children, typeObj, typeObj.type);
-          })}
-            </Description>
-          </TextContent>
+    {/* <ImageGallery items={images} autoPlay={true}/> */}
+    <button type="button" onClick={() => setOpen(true)}>
+        Open Lightbox
+      </button>
+<Lightbox
+  open = {open}
+  close={() => setOpen(false)}
+  slides={images}
+  />
                 <TextContent>
           
               <ComponentPreviewLink className="group" href="/thank-you">

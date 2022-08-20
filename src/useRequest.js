@@ -169,18 +169,88 @@ export function useGetPosts() {
     });
   }
 
-  export function usePostComments(commentObj) {
+  export function useGetComments() {
     const query = gql`
-mutation CreateComment($name: String!, $email: String!, $comment: String!) {
-  createComment(data: {name: $name, email: $email, comment: $comment) { id }
-}
-`;
-    return useQuery("post-comment", async () => {
-      const result = await graphQLClient.request(query,{
-        name: commentObj.name,
-        email: commentObj.email,
-        comment: commentObj.comment,
-      });
-      return result;
+    query GetCommentsCopy() {
+        commentsCopy(){
+          name
+          createdAt
+          comment
+        }
+      }
+  `;
+    return useQuery("get-comments", async () => {
+      const result = await graphQLClient.request(query);
+      return result.commentsCopy;
     });
   }
+
+  export function useGetGallery() {
+    const query = gql`
+    query MyQuery {
+        galleriesConnection {
+          edges {
+            cursor
+            node {
+              slug
+              title
+              excerpt
+              featuredImage {
+                url
+              }
+              postPics {
+                url
+              }
+            }
+          }
+        }
+      }
+  `;
+    return useQuery("get-gallery", async () => {
+      const result = await graphQLClient.request(query);
+      return result.galleriesConnection.edges;
+    });
+  }
+
+  export function useGetGalleryDetails(slug) {
+    const query = gql`
+    query GetGalleryDetails($slug : String!) {
+        gallery(where: {slug: $slug}) {
+          title
+          excerpt
+          postPics {
+            url
+          }
+          featuredImage {
+            url
+          }
+          slug
+        }
+      }
+  `;
+    return useQuery("get-gallery-details", async () => {
+      const result = await graphQLClient.request(query, { slug });
+      return result.gallery;
+    });
+  }
+
+  export function useGetOtherGallery(slug) {
+    const query = gql`
+    query GetGalleryDetails($slug: String!) {
+        galleries(
+          where: {slug_not: $slug}
+        ) {
+            title
+          excerpt
+          featuredImage {
+            url
+          }
+          slug
+        }
+      }
+  `;
+    return useQuery("get-other-gallery", async () => {
+      const result = await graphQLClient.request(query, { slug });
+      return result.galleries;
+    });
+}
