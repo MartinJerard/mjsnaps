@@ -61,7 +61,6 @@ console.log(JSON.stringify(images))
             <Heading>{data.title}</Heading>
             <Description>{data.excerpt}</Description>
           </TextContent>
-    {/* <ImageGallery items={images} autoPlay={true}/> */}
     <button type="button" onClick={() => setOpen(true)}>
         Open Lightbox
       </button>

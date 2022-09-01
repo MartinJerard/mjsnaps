@@ -5,9 +5,6 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons";
-import { ReactComponent as PriceIcon } from "feather-icons/dist/icons/dollar-sign.svg";
-import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
-import { ReactComponent as StarIcon } from "feather-icons/dist/icons/star.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { useGetOtherGallery } from "../../useRequest";
@@ -110,14 +107,6 @@ export default () => {
                 <TitleReviewContainer>
                   <Title>{post.title}</Title>
                 </TitleReviewContainer>
-                {/* <SecondaryInfoContainer>
-                  <IconWithText>
-                    <IconContainer>
-                      <LocationIcon />
-                    </IconContainer>
-                    <Text>{post.location}</Text>
-                  </IconWithText>
-                </SecondaryInfoContainer> */}
                 <Description>{post.excerpt}</Description>
               </TextInfo>
               <PrimaryButton as="a" href={`/gallery/${post.slug}`}>View Album</PrimaryButton>

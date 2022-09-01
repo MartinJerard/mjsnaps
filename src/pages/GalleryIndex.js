@@ -70,7 +70,6 @@ export default ({
   return (
     <AnimationRevealPage>
       <Container>
-        {/* <ContentWithPaddingXl> */}
           <HeadingRow>
             <Heading>{headingText}</Heading>
           </HeadingRow>
@@ -81,26 +80,12 @@ export default ({
               <MasonryLayout data={data.slice(0, visible)} />
           </ContainerCard>
         </div>
-            // {data.slice(0, visible).map((post, index) => (
-            //   <PostContainer key={index} featured={post.node.featuredPost}>
-            //     <Post className="group" as="a" href={`blogs/${post.node.slug}`}>
-            //       <Image imageSrc={post.node.featuredImage.url} />
-            //       <Info>
-            //         <Category><IconWithText><LocationIcon />{post.node.location}</IconWithText></Category>
-            //         <CreationDate><IconWithText><DateIcon />{moment(post.node.visitedOn).format('MMM YYYY')}</IconWithText></CreationDate>
-            //         <Title>{post.node.title}</Title>
-            //         {post.node.featuredPost && post.node.excerpt && <Description>{post.node.excerpt}</Description>}
-            //       </Info>
-            //     </Post>
-            //   </PostContainer>
-            // ))}
           }
           {isSuccess && visible < data.length && (
             <ButtonContainer>
               <LoadMoreButton onClick={onLoadMoreClick}>Load More</LoadMoreButton>
             </ButtonContainer>
           )}
-        {/* </ContentWithPaddingXl> */}
       </Container>
     </AnimationRevealPage>
   );

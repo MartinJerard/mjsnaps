@@ -25,9 +25,6 @@ export default function App() {
 <Header/>
     <Router>
       <Switch>
-        {/* <Route path="/components/:type/:subtype/:name">
-          <ComponentRenderer />
-        </Route> */}
         <Route path="/blogs/:postName">
           <BlogPosts />
         </Route> 
@@ -52,22 +49,3 @@ export default function App() {
 </AnimationRevealPage>
   );
 }
-
-// export default EventLandingPage;
-// export default HotelTravelLandingPage;
-// export default AgencyLandingPage;
-// export default SaaSProductLandingPage;
-// export default RestaurantLandingPage;
-// export default ServiceLandingPage;
-// export default HostingCloudLandingPage;
-
-// export default LoginPage;
-// export default SignupPage;
-// export default PricingPage;
-// export default AboutUsPage;
-// export default ContactUsPage;
-// export default BlogIndexPage;
-// export default TermsOfServicePage;
-// export default PrivacyPolicyPage;
-
-// export default MainLandingPage;
