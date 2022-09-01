@@ -13,7 +13,7 @@ const graphQLClient = new GraphQLClient(graphqlAPI, {
 export function useGetPosts() {
     const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(first: 100) {
         edges {
           cursor
           node {
@@ -134,7 +134,7 @@ export function useGetPosts() {
     const query = gql`
     query GetAdjacentPosts() {
         featured:posts(
-          first: 1
+          first: 2
           where: {featuredPost: true}
         ) {
                 slug
@@ -188,7 +188,7 @@ export function useGetPosts() {
   export function useGetGallery() {
     const query = gql`
     query MyQuery {
-        galleriesConnection {
+        galleriesConnection(first: 100) {
           edges {
             cursor
             node {

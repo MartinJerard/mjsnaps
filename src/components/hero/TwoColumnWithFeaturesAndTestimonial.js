@@ -44,7 +44,7 @@ const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-prima
 export default ({
   heading = "About Author",
   description = "Welcome! Hope you are doing Fine!",
-  descriptionLine1 = "As a Avid Traveller and Amateur Photographer, I use this space to share things I feel like sharing. Hope you have a good time around!",
+  descriptionLine1 = "Avid Traveller and Amateur Photographer, Using this space to share things I feel like sharing. Hope you have a good time around!",
   imageSrc = MyImage,
   imageDecoratorBlob = true,
   primaryButtonUrl = "/thank-you",
@@ -89,7 +89,7 @@ export default ({
                 </div>
               <ContentWithPadding>
               <ComponentPreviewLink className="group" href={primaryButtonUrl}>
-                Should you have a comment, Leave Here{" "}
+                Should you have any comment, Leave Here{" "}
                 <ArrowRightIcon tw="transition duration-300 transform group-hover:translate-x-px ml-2 w-4 h-4" />
               </ComponentPreviewLink>
               </ContentWithPadding>

@@ -12,7 +12,7 @@ import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin
 import { ReactComponent as DateIcon } from "feather-icons/dist/icons/calendar.svg";
 
 
-const HeadingRow = tw.div`flex`;
+const HeadingRow = tw.div`flex justify-center`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
 const PostContainer = styled.div`
@@ -45,6 +45,8 @@ const Category = tw.div`uppercase text-primary-300 text-xs font-bold tracking-wi
 const CreationDate = tw.div`mt-4 uppercase text-gray-600 italic font-semibold text-xs`;
 const Title = tw.div`mt-1 font-black text-2xl text-gray-900 group-hover:text-primary-500 transition duration-300`;
 const Description = tw.div``;
+const LocationAndDate = tw.div`text-xs text-gray-600`;
+
 
 const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
@@ -72,10 +74,10 @@ export default ({
                 <Post className="group" as="a" href={`blogs/${post.node.slug}`}>
                   <Image imageSrc={post.node.featuredImage.url} />
                   <Info>
-                    <Category><IconWithText><LocationIcon />{post.node.location}</IconWithText></Category>
-                    <CreationDate><IconWithText><DateIcon />{moment(post.node.visitedOn).format('MMM YYYY')}</IconWithText></CreationDate>
                     <Title>{post.node.title}</Title>
                     {post.node.featuredPost && post.node.excerpt && <Description>{post.node.excerpt}</Description>}
+                    <LocationAndDate><IconWithText><LocationIcon />{post.node.location}</IconWithText>
+                    <IconWithText><DateIcon />{moment(post.node.visitedOn).format('MMM YYYY')}</IconWithText></LocationAndDate>
                   </Info>
                 </Post>
               </PostContainer>

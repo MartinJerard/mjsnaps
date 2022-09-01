@@ -14,7 +14,7 @@ import MasonryLayout from 'components/MasonryLayout/MasonryLayout';
 import ContainerCard from 'components/ContainerCard/ContainerCard';
 
 
-const HeadingRow = tw.div`flex`;
+const HeadingRow = tw.div`flex justify-center`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
 const Container = tw(ContainerBase)`content-center`;
@@ -63,7 +63,7 @@ export default ({
   headingText = "Gallery",
 }) => {
   const { data , isSuccess } = useGetGallery();
-  const [visible, setVisible] = useState(15);
+  const [visible, setVisible] = useState(10);
   const onLoadMoreClick = () => {
     setVisible(v => v + 6);
   };
@@ -74,9 +74,10 @@ export default ({
           <HeadingRow>
             <Heading>{headingText}</Heading>
           </HeadingRow>
-          {isSuccess &&           
+          {isSuccess &&   
           <div className="flex justify-content-center" style={{ marginTop: "50px", padding: '50px' }}>
           <ContainerCard>
+            {          console.log(JSON.stringify(data))        }
               <MasonryLayout data={data.slice(0, visible)} />
           </ContainerCard>
         </div>

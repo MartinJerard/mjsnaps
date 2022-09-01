@@ -71,12 +71,12 @@
     font-size: 1rem;
     text-transform: capitalize;
 }
-@media screen and (max-width: 800px) {
+  @media screen and (max-width: 800px) {
     .my-masnry-user-prof button h1{
-      font-size: 4vw;
+      font-size: 0.9rem;
     }
     .my-masnry-user-prof-desc{
-        font-size: 3vw;
+        font-size: 0.75rem;
       }
       .my-masnry-description-top{
         height: 20px;

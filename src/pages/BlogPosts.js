@@ -20,7 +20,7 @@ const TextColumn = styled(Column)(props => [
   tw`md:w-6/12 mt-8 md:mt-0`,
   props.textOnLeft ? tw`md:mr-8 lg:mr-16 md:order-first` : tw`md:ml-8 lg:ml-16 md:order-last`
 ]);
-const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-primary-900 transition duration-300 font-semibold flex items-center items-center`;
+const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-primary-900 transition duration-300 font-semibold flex items-center items-center justify-center`;
 const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
 
 
@@ -29,9 +29,11 @@ const Image = styled.div(props => [
   tw`rounded bg-cover bg-center h-full`,
 ]);
 
-const TextContent = tw.div`lg:py-8`;
+const TextContent = tw.div`lg:py-8 flex justify-center`;
 
-const Heading = tw(SectionHeading)`text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Heading = tw(SectionHeading)`text-center text-3xl sm:text-4xl lg:text-5xl text-center md:text-center leading-tight`;
+const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg text-center`;
+const PostContents = tw.p`my-5 lg:my-8 text-base xl:text-lg text-left content-center`;
 const Description = tw.p`text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100 mt-4`
 
 const Statistics = tw.div`mt-6 lg:mt-8 xl:mt-16 flex flex-wrap`
@@ -96,6 +98,7 @@ export default () => {
     <TextContent>
             <Heading>{data.title}</Heading>
           </TextContent>
+          <Paragraph>{data.excerpt}</Paragraph>
     <ImageGallery items={images} autoPlay={true}/>
     <TextContent>
             <Description>

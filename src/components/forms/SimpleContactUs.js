@@ -140,7 +140,7 @@ const graphqlAPI = process.env.REACT_APP_PUBLIC_GRAPHCMS_ENDPOINT;
                 <Column>
                   <InputContainer tw="flex-1">
                     <Label htmlFor="name-input">Your Message</Label>
-                    <TextArea id="message-input" name="comment" placeholder="Enter you comments..." onChange={onInputChange} value={formData.comment}/>
+                    <TextArea id="message-input" name="comment" placeholder="Enter your comments..." onChange={onInputChange} value={formData.comment}/>
                   </InputContainer>
                 </Column>
               </TwoColumn>

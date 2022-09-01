@@ -5,7 +5,7 @@ import {Container as ContainerBase } from "components/misc/Layouts.js"
 import logo from "../../images/logo.svg";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import { ReactComponent as YoutubeIcon } from "feather-icons/dist/icons/instagram.svg";
 
 
 const Container = tw(ContainerBase)`bg-gray-900 text-gray-100 -mx-8 -mb-8`
@@ -39,18 +39,18 @@ export default () => {
             <LogoText>MJ Snaps</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="/blogs">Blog</Link>
+            <Link href="/blogs">Blogs</Link>
             <Link href="/gallery">Gallery</Link>
           </LinksContainer>
           <SocialLinksContainer>
             <HighlightedText>Follow: </HighlightedText> 
-            <SocialLink href="https://facebook.com">
+            <SocialLink href="https://www.facebook.com/MartinInfantRaj">
               <FacebookIcon />
             </SocialLink>
-            <SocialLink href="https://twitter.com">
+            <SocialLink href="https://twitter.com/mj_desanthiri">
               <TwitterIcon />
             </SocialLink>
-            <SocialLink href="https://youtube.com">
+            <SocialLink href="https://www.instagram.com/mj_shutterbug/">
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
