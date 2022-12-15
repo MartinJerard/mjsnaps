@@ -7,11 +7,12 @@ import styled from "styled-components";
 import { css } from "styled-components/macro";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
-import { useGetGallery } from "../useRequest";
+import { useGetAssets, useGetGallery } from "../useRequest";
 import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 import { ReactComponent as DateIcon } from "feather-icons/dist/icons/calendar.svg";
 import MasonryLayout from 'components/MasonryLayout/MasonryLayout';
 import ContainerCard from 'components/ContainerCard/ContainerCard';
+
 
 
 const HeadingRow = tw.div`flex justify-center`;
@@ -76,7 +77,6 @@ export default ({
           {isSuccess &&   
           <div className="flex justify-content-center" style={{ marginTop: "50px", padding: '50px' }}>
           <ContainerCard>
-            {          console.log(JSON.stringify(data))        }
               <MasonryLayout data={data.slice(0, visible)} />
           </ContainerCard>
         </div>

@@ -11,7 +11,8 @@ import { Container, ContentWithVerticalPadding, ContentWithPadding } from "compo
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg"
 import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg"
-import MyImage  from "images/IMG_8983.jpg"
+// import MyImage  from "images/IMG_8983.jpg"
+import { useGetBlogDP } from "../../useRequest";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
 
 
@@ -45,7 +46,7 @@ export default ({
   heading = "About Author",
   description = "Welcome! Hope you are doing Fine!",
   descriptionLine1 = "Avid Traveller and Amateur Photographer, Using this space to share things I feel like sharing. Hope you have a good time around!",
-  imageSrc = MyImage,
+  imageSrc = "",
   imageDecoratorBlob = true,
   primaryButtonUrl = "/thank-you",
   primaryButtonText = "Go to All Blog Posts",
@@ -58,6 +59,8 @@ export default ({
   }
 }) => {
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
+  const { data , isSuccess } = useGetBlogDP();
+
 
   return (
       <Container>
@@ -105,7 +108,7 @@ export default ({
             </TextColumn>
             <ImageColumn>
               <ImageContainer>
-                <Image src={imageSrc} />
+                {isSuccess && <Image src={data} />}
                 {imageDecoratorBlob && <ImageDecoratorBlob />}
                 <Testimonial>
                   <QuotesLeftIcon/>

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import tw from "twin.macro";
-
+import ImageGallery from 'react-image-gallery';
 
 export const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
 
@@ -14,19 +14,14 @@ export const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-primary-50
 const MasonryBox = ({ wallSrc, slug, title, images }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-  console.log(images);
   return (
-    // <a href={`/gallery/${slug}`}>
-
-    <div className={styles["my-masonry"]}>
-      
+    <div className={styles["my-masonry"]}>      
       <img src={wallSrc} style={{ width: "100%" }} alt="" />
       <div className={`${styles["my-masnry-description-top"]} flex`}>
         <div
             className={`${styles["my-masnry-user-prof-desc"]} flex flex-column`}
           >
             <h1>{title}</h1>
-            {/* <h3>{userJob}</h3> */}
           </div>
           </div>
       <div className={`${styles["my-masnry-description"]} flex`}>
@@ -34,7 +29,6 @@ const MasonryBox = ({ wallSrc, slug, title, images }) => {
           className={`${styles["my-masnry-user-box"]} flex align-items-center`}
         >
           <div className={styles["my-masnry-user-prof"]}>
-            {/* <img src={userProf} alt="" /> */}
             <button type="button" onClick={() => setIsOpen(true)}>
             <h1>Open Album</h1>
             </button>

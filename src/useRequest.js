@@ -10,6 +10,34 @@ const graphQLClient = new GraphQLClient(graphqlAPI, {
   }
 });
 
+
+export function useGetBlogDP() {
+  const query = gql`
+  query MyQuery {
+    asset(where: {id: "clboio6o716o50bpffqeh6r55"}) {
+      url
+    }
+  }
+`;
+  return useQuery("get-Blog-DP", async () => {
+    const result = await graphQLClient.request(query);
+    return result.asset.url;
+  });
+}
+export function useGetAssets() {
+  const query = gql`
+  query MyQuery {
+    assets(first: 200, where:{id_not: "clboio6o716o50bpffqeh6r55"}) {
+      url
+    }
+  }
+`;
+  return useQuery("get-assets", async () => {
+    const result = await graphQLClient.request(query);
+    return result.assets;
+  });
+}
+
 export function useGetPosts() {
     const query = gql`
     query MyQuery {
