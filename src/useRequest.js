@@ -13,7 +13,7 @@ const graphQLClient = new GraphQLClient(graphqlAPI, {
 export function useGetPosts() {
     const query = gql`
     query MyQuery {
-      postsConnection(first: 100) {
+      postsConnection(first: 100, orderBy: publishedAt_DESC) {
         edges {
           cursor
           node {
@@ -88,7 +88,7 @@ export function useGetPosts() {
         excerpt
         visitedOn
         location
-        postPics {
+        postPics(first:100) {
           url
         }
         featuredImage {
@@ -188,7 +188,7 @@ export function useGetPosts() {
   export function useGetGallery() {
     const query = gql`
     query MyQuery {
-        galleriesConnection(first: 100) {
+        galleriesConnection(first: 100, orderBy: publishedAt_DESC) {
           edges {
             cursor
             node {
@@ -198,7 +198,7 @@ export function useGetPosts() {
               featuredImage {
                 url
               }
-              postPics {
+              postPics(first:100) {
                 url
               }
             }
