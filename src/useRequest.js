@@ -218,7 +218,7 @@ export function useGetPosts() {
         gallery(where: {slug: $slug}) {
           title
           excerpt
-          postPics {
+          postPics(first:100) {
             url
           }
           featuredImage {
