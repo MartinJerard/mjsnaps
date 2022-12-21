@@ -14,7 +14,7 @@ const graphQLClient = new GraphQLClient(graphqlAPI, {
 export function useGetBlogDP() {
   const query = gql`
   query MyQuery {
-    asset(where: {id: "clboio6o716o50bpffqeh6r55"}) {
+    asset(where: {id: "clbxsbbi10z390bpjoyd4vmju"}) {
       url
     }
   }
@@ -27,7 +27,7 @@ export function useGetBlogDP() {
 export function useGetAssets() {
   const query = gql`
   query MyQuery {
-    assets(first: 200, where:{id_not: "clboio6o716o50bpffqeh6r55"}) {
+    assets(first: 200, where:{id_not: "clbxsbbi10z390bpjoyd4vmju"}) {
       url
     }
   }
