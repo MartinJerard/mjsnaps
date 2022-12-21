@@ -116,7 +116,7 @@ export function useGetPosts() {
         excerpt
         visitedOn
         location
-        postPics(first:100, orderBy:createdAt_DESC) {
+        postPics(first:100, orderBy:createdAt_ASC) {
           url
         }
         featuredImage {
