@@ -8,8 +8,6 @@ import { ReactComponent as QuoteIconBase } from "images/quotes-l.svg"
 import { useGetComments } from "../../useRequest";
 import { ReactComponent as DateIcon } from "feather-icons/dist/icons/calendar.svg";
 
-
-
 const HeadingContainer = tw.div``;
 const Subheading = tw(SubheadingBase)`text-center text-gray-100 mb-4`;
 const Heading = tw(SectionHeading)``;

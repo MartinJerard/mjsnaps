@@ -7,9 +7,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
-import { useGetAssets, useGetGallery } from "../useRequest";
-import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
-import { ReactComponent as DateIcon } from "feather-icons/dist/icons/calendar.svg";
+import { useGetGallery } from "../useRequest";
 import MasonryLayout from 'components/MasonryLayout/MasonryLayout';
 import ContainerCard from 'components/ContainerCard/ContainerCard';
 

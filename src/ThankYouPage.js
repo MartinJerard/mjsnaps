@@ -5,15 +5,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
 import GitHubButton from "react-github-btn";
-
-import { LogoLink } from "components/headers/light.js";
 import { SectionHeading as HeadingBase } from "components/misc/Headings";
 import { SectionDescription as DescriptionBase } from "components/misc/Typography";
 import ContactUsForm from "components/forms/SimpleContactUs.js";
 import Testimonial from "components/testimonials/SimplePrimaryBackground.js";
-
-
-import logo from "images/logo.svg";
 import PopularAndRecentPostsBlog from "components/blogs/PopularAndRecentBlogPosts.js";
 
 

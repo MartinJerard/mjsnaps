@@ -6,10 +6,8 @@ import Masonry from "react-masonry-css"
 
 // import other component to use
 import MasonryBox from './MasonryBox/MasonryBox';
-import ImageGallery from 'react-image-gallery';
 
 import "react-awesome-lightbox/build/style.css";
-import Lightbox from "react-awesome-lightbox";
 
 // MasonryLayout Component
 const MasonryLayout = ({ data }) => {
