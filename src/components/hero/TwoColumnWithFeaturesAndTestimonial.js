@@ -43,7 +43,7 @@ export default ({
   testimonial = {
     quote: "Martin Jerard",
     customerName: "Martin Jerard",
-    customerCompany: "SDE-T @ Amazon"
+    customerCompany: ""
   }
 }) => {
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
