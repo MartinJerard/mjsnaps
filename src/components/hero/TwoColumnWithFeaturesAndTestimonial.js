@@ -80,7 +80,7 @@ export default ({
                 </div>
               <ContentWithPadding>
               <ComponentPreviewLink className="group" href={primaryButtonUrl}>
-                Should you have any comment, Leave Here{" "}
+                If you have any comment, Leave Here{" "}
                 <ArrowRightIcon tw="transition duration-300 transform group-hover:translate-x-px ml-2 w-4 h-4" />
               </ComponentPreviewLink>
               </ContentWithPadding>
